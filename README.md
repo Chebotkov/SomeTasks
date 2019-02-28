@@ -3,8 +3,8 @@
   <li>Generate specified amount of file with next content:
       <ul>Every row contains
         <li>Random date till last five years.</li>
-        <li>Random sequence from 10 latin symbols.</li>
-        <li>Random sequence from 10 cyrillic symbols.</li>
+        <li>Random sequence of 10 latin symbols.</li>
+        <li>Random sequence of 10 cyrillic symbols.</li>
         <li>Random integer number from specified range.</li>
         <li>Random double number with specified precision.</li>
       </ul>
