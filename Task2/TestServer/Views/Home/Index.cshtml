@@ -1,0 +1,16 @@
+﻿@{
+	ViewBag.Title = "Home Page";
+}
+
+<h3>Total files amount: @ViewBag.Files.Count</h3>
+@foreach (string fileName in ViewBag.Files)
+{
+	<p>@fileName</p>
+}
+<br />
+
+@using (Html.BeginForm("Display", "Home", FormMethod.Get))
+{
+	@Html.DropDownList("fileName", ViewBag.Files as SelectList)
+	<input type="submit" value="Display">
+}

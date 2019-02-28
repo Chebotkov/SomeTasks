@@ -1,0 +1,108 @@
+﻿@using TestServer.Models;
+@{
+	ViewBag.Title = "Display";
+	TestServer.Models.File file = ViewBag.File as TestServer.Models.File;
+	BalanceNumber total = ViewBag.TotalSum;
+	IEnumerable<BalanceNumber> totalSums = ViewBag.SumByClass;
+}
+
+<h4>Data from @file.Name</h4>
+<h5>@file.BankName</h5>
+<h3>Оборотная ведомость по балансовым счетам</h3>
+<p>за период с @file.FromDate по @file.ToDate</p>
+<p>по банку</p><br>
+<p>@DateTime.Today в руб.</p>
+
+<table class="table">
+	<tbody>
+		<tr>
+			<th rowspan="2">Б/сч</th>
+			<th colspan="2">Входящее сальдо</th>
+			<th colspan="2">Обороты</th>
+			<th colspan="2">Исходящее сальдо</th>
+		</tr>
+		<tr>
+			<th>Актив</th>
+			<th>Пассив</th>
+			<th>Дебет</th>
+			<th>Кредит</th>
+			<th>Актив</th>
+			<th>Пассив</th>
+		</tr>
+
+		@{foreach (Class currentClass in ViewBag.Classes)
+			{
+				<tr><th colspan="7">@currentClass.Name</th></tr>
+				BalanceNumber tempBalance = new BalanceNumber();
+				int currentValue = currentClass.Balances.First().BalanceId / 100;
+
+				foreach (BalanceNumber balance in currentClass.Balances)
+				{
+					if (currentValue != balance.BalanceId / 100)
+					{
+						<tr>
+							<th>@currentValue</th>
+							<th>@Math.Round(tempBalance.AssetBalance, 2)</th>
+							<th>@Math.Round(tempBalance.PassiveBalance, 2)</th>
+							<th>@Math.Round(tempBalance.TurnoverDebit, 2)</th>
+							<th>@Math.Round(tempBalance.TurnoverLoan, 2)</th>
+							<th>@Math.Round(tempBalance.AssetOutgoingBalance, 2)</th>
+							<th>@Math.Round(tempBalance.PassiveOutgoingBalance, 2)</th>
+						</tr>
+
+						tempBalance = new BalanceNumber();
+						currentValue = balance.BalanceId / 100;
+					}
+
+					tempBalance.AssetBalance += balance.AssetBalance;
+					tempBalance.AssetOutgoingBalance += balance.AssetOutgoingBalance;
+					tempBalance.PassiveBalance += balance.PassiveBalance;
+					tempBalance.PassiveOutgoingBalance += balance.PassiveOutgoingBalance;
+					tempBalance.TurnoverDebit += balance.TurnoverDebit;
+					tempBalance.TurnoverLoan += balance.TurnoverLoan;
+
+					<tr>
+						<td>@balance.BalanceId</td>
+						<td>@Math.Round(balance.AssetBalance, 2)</td>
+						<td>@Math.Round(balance.PassiveBalance, 2)</td>
+						<td>@Math.Round(balance.TurnoverDebit, 2)</td>
+						<td>@Math.Round(balance.TurnoverLoan, 2)</td>
+						<td>@Math.Round(balance.AssetOutgoingBalance, 2)</td>
+						<td>@Math.Round(balance.PassiveOutgoingBalance, 2)</td>
+					</tr>
+				}
+
+				<tr>
+					<th>@currentValue</th>
+					<th>@Math.Round(tempBalance.AssetBalance, 2)</th>
+					<th>@Math.Round(tempBalance.PassiveBalance, 2)</th>
+					<th>@Math.Round(tempBalance.TurnoverDebit, 2)</th>
+					<th>@Math.Round(tempBalance.TurnoverLoan, 2)</th>
+					<th>@Math.Round(tempBalance.AssetOutgoingBalance, 2)</th>
+					<th>@Math.Round(tempBalance.PassiveOutgoingBalance, 2)</th>
+				</tr>
+
+				BalanceNumber totalBalanceByClass = totalSums.Where(b => b.ClassId == currentClass.ClassId).FirstOrDefault();
+				<tr>
+					<th>ПО КЛАССУ</th>
+					<th>@totalBalanceByClass.AssetBalance</th>
+					<th>@totalBalanceByClass.PassiveBalance</th>
+					<th>@totalBalanceByClass.TurnoverDebit</th>
+					<th>@totalBalanceByClass.TurnoverLoan</th>
+					<th>@totalBalanceByClass.AssetOutgoingBalance</th>
+					<th>@totalBalanceByClass.PassiveOutgoingBalance</th>
+				</tr>
+			}
+		}
+
+		<tr>
+			<th>БАЛАНС</th>
+			<th>@total.AssetBalance</th>
+			<th>@total.PassiveBalance</th>
+			<th>@total.TurnoverDebit</th>
+			<th>@total.TurnoverLoan</th>
+			<th>@total.AssetOutgoingBalance</th>
+			<th>@total.PassiveOutgoingBalance</th>
+		</tr>
+	</tbody>
+</table>

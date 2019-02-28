@@ -1,0 +1,7 @@
+D:\Projects\JobInterview\Task2\DocumentWorker\bin\Debug\DocumentWorker.dll
+D:\Projects\JobInterview\Task2\DocumentWorker\bin\Debug\DocumentWorker.pdb
+D:\Projects\JobInterview\Task2\DocumentWorker\obj\Debug\DocumentWorker.csprojResolveAssemblyReference.cache
+D:\Projects\JobInterview\Task2\DocumentWorker\obj\Debug\DocumentWorker.csproj.ResolveComReference.cache
+D:\Projects\JobInterview\Task2\DocumentWorker\obj\Debug\DocumentWorker.csproj.CoreCompileInputs.cache
+D:\Projects\JobInterview\Task2\DocumentWorker\obj\Debug\DocumentWorker.dll
+D:\Projects\JobInterview\Task2\DocumentWorker\obj\Debug\DocumentWorker.pdb

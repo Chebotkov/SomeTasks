@@ -1,0 +1,13 @@
+﻿
+@{
+	ViewBag.Title = "Upload";
+}
+
+<h3>Choose files for uploading. Max file size is 20Mb.</h3>
+@using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+	<input type="file" name="uploads" /><br>
+	<input type="file" name="uploads" /><br>
+	<input type="file" name="uploads" /><br>
+	<input type="submit" value="Load" />
+}

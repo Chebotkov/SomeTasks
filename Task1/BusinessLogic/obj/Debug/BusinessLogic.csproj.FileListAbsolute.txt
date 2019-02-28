@@ -1,0 +1,7 @@
+D:\Projects\JobInterview\Task1\BusinessLogic\bin\Debug\BusinessLogic.dll
+D:\Projects\JobInterview\Task1\BusinessLogic\bin\Debug\BusinessLogic.pdb
+D:\Projects\JobInterview\Task1\BusinessLogic\obj\Debug\BusinessLogic.csproj.CoreCompileInputs.cache
+D:\Projects\JobInterview\Task1\BusinessLogic\obj\Debug\BusinessLogic.dll
+D:\Projects\JobInterview\Task1\BusinessLogic\obj\Debug\BusinessLogic.pdb
+D:\Projects\JobInterview\Task1\BusinessLogic\bin\Debug\BusinessLogic.dll.config
+D:\Projects\JobInterview\Task1\BusinessLogic\obj\Debug\BusinessLogic.csprojResolveAssemblyReference.cache
